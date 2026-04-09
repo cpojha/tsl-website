@@ -1,18 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo } from "react";
 import {
-  ReactFlow,
-  Background,
-  Controls,
-  MiniMap,
   useNodesState,
   useEdgesState,
   type Node,
   type Edge,
 } from "@xyflow/react";
-import "@xyflow/react/dist/style.css";
-import { nodeTypes } from "@/components/canvas-nodes";
+import { Button } from "@/components/ui/button";
+import { Monitor } from "lucide-react";
 import type { SharedCanvasData, SharedNode, SharedConnection } from "@/types/canvas";
 
 function toFlowNodes(nodes: SharedNode[]): Node[] {
@@ -61,34 +58,23 @@ export function CanvasViewer({ canvas, shareToken }: CanvasViewerProps) {
     <div className="h-screen w-screen flex flex-col">
       <header className="border-b px-6 py-3 flex items-center justify-between bg-white">
         <div>
-          <h1 className="text-lg font-semibold">{canvas.title}</h1>
+          <h1 className="text-lg">{canvas.title}</h1>
           {canvas.description && (
             <p className="text-sm text-gray-500">{canvas.description}</p>
           )}
         </div>
-        <a
-          href={`invook://canvas/clone/${shareToken}`}
-          className="text-sm text-blue-600 hover:underline"
-        >
-          Open in Invook
-        </a>
       </header>
 
-      <div className="flex-1">
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          nodeTypes={nodeTypes}
-          nodesDraggable={false}
-          nodesConnectable={false}
-          elementsSelectable={false}
-          fitView
-          fitViewOptions={{ padding: 0.2 }}
-        >
-          <Background />
-          <Controls showInteractive={false} />
-          <MiniMap />
-        </ReactFlow>
+      <div className="flex-1 flex flex-col items-center justify-center gap-4 p-8">
+        <Monitor className="h-12 w-12 text-muted-foreground" />
+        <h2 className="text-xl text-balance text-center">
+          Share canvas can be displayed on desktop only
+        </h2>
+        <Button asChild>
+          <Link href={`invook://canvas/clone/${shareToken}`}>
+            Open in Desktop App
+          </Link>
+        </Button>
       </div>
     </div>
   );
