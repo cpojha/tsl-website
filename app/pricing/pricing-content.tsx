@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useAnalytics } from "@/hooks/use-analytics";
 import { CTASection } from "@/components/cta-section";
+import { SeedanceBanner } from "@/components/seedance-banner";
 import { ChevronDown } from "lucide-react";
 import { PricingCard } from "./pricing-card";
 import { ModelCapacityTables } from "@/components/model-capacity-tables";
@@ -47,7 +48,7 @@ interface TopUpTier {
 export default function PricingContent() {
   const router = useRouter();
   const { isAuthenticated } = useAuthStore();
-  const [isYearly, setIsYearly] = useState(true);
+  const [isYearly, setIsYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   
   const { capture } = useAnalytics();
@@ -98,7 +99,8 @@ export default function PricingContent() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] pt-32 pb-24">
         {/* Header Section */}
         <div className="text-center mb-16 flex flex-col items-center">
-          <h1 className="text-4xl md:text-5xl font-medium tracking-tight mb-8">
+          <SeedanceBanner />
+          <h1 className="text-4xl md:text-5xl font-medium tracking-tight mb-8 mt-4">
             Pricing
           </h1>
 
