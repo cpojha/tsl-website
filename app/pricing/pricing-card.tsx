@@ -3,6 +3,8 @@ import { Check } from "lucide-react";
 interface PricingCardProps {
   title: string;
   price: string;
+  originalPrice?: string;
+  yearlyPrice?: string;
   isYearly?: boolean;
   priceSubtext?: string;
   recommended?: boolean;
@@ -12,12 +14,15 @@ interface PricingCardProps {
   buttonVariant: "primary" | "secondary";
   isAddon?: boolean;
   credits?: string;
+  creditsSubtext?: string;
   onClick?: () => void;
 }
 
 export function PricingCard({
   title,
   price,
+  originalPrice,
+  yearlyPrice,
   isYearly,
   priceSubtext = "/mo.",
   recommended,
@@ -27,6 +32,7 @@ export function PricingCard({
   buttonVariant,
   isAddon,
   credits,
+  creditsSubtext,
   onClick,
 }: PricingCardProps) {
   return (
@@ -39,14 +45,26 @@ export function PricingCard({
           )}
         </div>
 
-        <div className="flex items-baseline mb-6 flex-wrap">
-          <span className="text-[20px] md:text-[22px] text-muted-foreground/80 font-medium tracking-tight">
-            {price === "Free" ? "Free" : `$${price}`}
-            <span className="text-[13px] md:text-[14px]">
-              {isAddon ? ` / ${credits} Credits` : (price !== "Free" ? ` ${priceSubtext}` : "")}
+        <div className="flex flex-col mb-6 flex-wrap">
+          <div className="flex items-baseline flex-wrap">
+            <span className="text-[20px] md:text-[22px] text-muted-foreground/80 font-medium tracking-tight">
+              {price === "Free" ? "Free" : `$${price}`}
+              <span className="text-[13px] md:text-[14px]">
+                {isAddon ? ` / ${credits} Credits` : (price !== "Free" ? ` ${priceSubtext}` : "")}
+                {isAddon && creditsSubtext && <span className="text-xs text-muted-foreground/70 ml-1">{creditsSubtext}</span>}
+              </span>
             </span>
-          </span>
-          {!isAddon && isYearly && price !== "Free" && <span className="text-xs text-[#f54e00] ml-2">Save 20%</span>}
+            {!isAddon && isYearly && price !== "Free" && <span className="text-xs text-[#f54e00] ml-2">Save 20%</span>}
+            {!isAddon && !isYearly && originalPrice && (
+              <span className="text-xs text-muted-foreground/50 line-through ml-2">${originalPrice}</span>
+            )}
+            {!isAddon && !isYearly && originalPrice && (
+              <span className="text-xs text-[#f54e00] ml-2">95% off</span>
+            )}
+          </div>
+          {!isAddon && isYearly && yearlyPrice && price !== "Free" && (
+            <span className="text-xs text-muted-foreground/70">${yearlyPrice}</span>
+          )}
         </div>
 
         <div className="text-sm text-muted-foreground mb-4">{includesText}</div>

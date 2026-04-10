@@ -24,6 +24,8 @@ interface IndividualPlan {
   id: string;
   title: string;
   price: PlanPrice;
+  yearlyPrice?: string;
+  originalPrice?: string;
   priceSubtext?: string;
   recommended?: boolean;
   includes: string;
@@ -36,6 +38,7 @@ interface TopUpTier {
   title: string;
   price: string;
   credits: string;
+  creditsSubtext?: string;
   includes?: string;
   features: string[];
   button: PlanButton;
@@ -130,6 +133,8 @@ export default function PricingContent() {
                 key={plan.id}
                 title={plan.title}
                 price={isYearly ? plan.price.yearly : plan.price.monthly}
+                originalPrice={plan.originalPrice}
+                yearlyPrice={plan.yearlyPrice}
                 isYearly={isYearly}
                 priceSubtext={plan.priceSubtext}
                 recommended={plan.recommended}
@@ -153,6 +158,7 @@ export default function PricingContent() {
                 title={tier.title}
                 price={tier.price}
                 credits={tier.credits}
+                creditsSubtext={tier.creditsSubtext}
                 isAddon={true}
                 includesText={tier.includes || "Includes capacity for:"}
                 features={tier.features}
