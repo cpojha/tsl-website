@@ -27,9 +27,11 @@
         "id": "starter",
         "title": "Starter",
         "price": {
-          "monthly": "20",
+          "monthly": "1",
           "yearly": "16"
         },
+        "yearlyPrice": "192",
+        "originalPrice": "20",
         "includes": "Everything in Free, plus:",
         "features": [
           "1,500 Monthly Credits",
@@ -54,6 +56,7 @@
           "monthly": "35",
           "yearly": "28"
         },
+        "yearlyPrice": "336",
         "includes": "Everything in Starter, plus:",
         "features": [
           "3,000 Monthly Credits",
@@ -75,6 +78,7 @@
           "monthly": "45",
           "yearly": "36"
         },
+        "yearlyPrice": "432",
         "priceSubtext": " per user/mo.",
         "includes": "Everything in Pro, plus:",
         "features": [
@@ -99,13 +103,14 @@
         "id": "micro",
         "title": "Micro",
         "price": "2",
-        "credits": "50",
+        "credits": "100",
+        "creditsSubtext": "(Available on all Plan)",
         "includes": "Includes capacity for:",
         "features": [
-          "~166 images",
-          "~1 video",
-          "~5K chars audio",
-          "~500K LLM tokens"
+          "~333 images",
+          "~2 videos",
+          "~10K chars audio",
+          "~1M LLM tokens"
         ],
         "button": {
           "text": "Buy Credits",
@@ -116,13 +121,14 @@
         "id": "small",
         "title": "Small",
         "price": "5",
-        "credits": "200",
+        "credits": "250",
+        "creditsSubtext": "(Available on all Plan)",
         "includes": "Includes capacity for:",
         "features": [
-          "~666 images",
-          "~5 videos",
-          "~20K chars audio",
-          "~2M LLM tokens"
+          "~833 images",
+          "~6 videos",
+          "~25K chars audio",
+          "~2.5M LLM tokens"
         ],
         "button": {
           "text": "Buy Credits",
@@ -133,13 +139,14 @@
         "id": "medium",
         "title": "Medium",
         "price": "10",
-        "credits": "450",
+        "credits": "500",
+        "creditsSubtext": "(Available on all Plan)",
         "includes": "Includes capacity for:",
         "features": [
-          "~1,500 images",
-          "~12 videos",
-          "~45K chars audio",
-          "~4.5M LLM tokens"
+          "~1,667 images",
+          "~15 videos",
+          "~50K chars audio",
+          "~5M LLM tokens"
         ],
         "button": {
           "text": "Buy Credits",
@@ -149,8 +156,9 @@
       {
         "id": "max",
         "title": "Max",
-        "price": "20",
+        "price": "15",
         "credits": "1,000",
+        "creditsSubtext": "(Available on all Plan)",
         "includes": "Includes capacity for:",
         "features": [
           "~3,333 images",

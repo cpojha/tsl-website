@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { SeedanceBanner } from "@/components/seedance-banner";
 
 export function Hero() {
 	return (
-		<section className="bg-background pt-20 pb-24">
-			<div className="container mx-auto max-w-[1400px]">
+		<section className="bg-background pt-4 pb-24">
+			<SeedanceBanner />
+			<div className="container mx-auto max-w-[1400px] mt-4">
 				<div className="flex flex-col items-start max-w-3xl">
 					<h1 className="text-xl sm:text-[24px] md:text-[28px] text-foreground mb-3 max-w-lg text-balance tracking-tighter">
 						Collaborative AI Creative Canvas

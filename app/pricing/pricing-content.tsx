@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useAnalytics } from "@/hooks/use-analytics";
 import { CTASection } from "@/components/cta-section";
+import { SeedanceBanner } from "@/components/seedance-banner";
 import { ChevronDown } from "lucide-react";
 import { PricingCard } from "./pricing-card";
 import { ModelCapacityTables } from "@/components/model-capacity-tables";
@@ -24,6 +25,8 @@ interface IndividualPlan {
   id: string;
   title: string;
   price: PlanPrice;
+  yearlyPrice?: string;
+  originalPrice?: string;
   priceSubtext?: string;
   recommended?: boolean;
   includes: string;
@@ -36,6 +39,7 @@ interface TopUpTier {
   title: string;
   price: string;
   credits: string;
+  creditsSubtext?: string;
   includes?: string;
   features: string[];
   button: PlanButton;
@@ -44,7 +48,7 @@ interface TopUpTier {
 export default function PricingContent() {
   const router = useRouter();
   const { isAuthenticated } = useAuthStore();
-  const [isYearly, setIsYearly] = useState(true);
+  const [isYearly, setIsYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   
   const { capture } = useAnalytics();
@@ -95,7 +99,8 @@ export default function PricingContent() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] pt-32 pb-24">
         {/* Header Section */}
         <div className="text-center mb-16 flex flex-col items-center">
-          <h1 className="text-4xl md:text-5xl font-medium tracking-tight mb-8">
+          <SeedanceBanner />
+          <h1 className="text-4xl md:text-5xl font-medium tracking-tight mb-8 mt-4">
             Pricing
           </h1>
 
@@ -130,6 +135,8 @@ export default function PricingContent() {
                 key={plan.id}
                 title={plan.title}
                 price={isYearly ? plan.price.yearly : plan.price.monthly}
+                originalPrice={plan.originalPrice}
+                yearlyPrice={plan.yearlyPrice}
                 isYearly={isYearly}
                 priceSubtext={plan.priceSubtext}
                 recommended={plan.recommended}
@@ -153,6 +160,7 @@ export default function PricingContent() {
                 title={tier.title}
                 price={tier.price}
                 credits={tier.credits}
+                creditsSubtext={tier.creditsSubtext}
                 isAddon={true}
                 includesText={tier.includes || "Includes capacity for:"}
                 features={tier.features}
