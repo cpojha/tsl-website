@@ -1,0 +1,7 @@
+{
+  "setup": [
+    "npm ci\n[ ! -f .env ] && cp .env.example .env.local"
+  ],
+  "teardown": [],
+  "run": []
+}
