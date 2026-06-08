@@ -1,6 +1,6 @@
-# Invook (Thinking Sound Lab Website)
+# Invook Marketing Website
 
-The official web presence for **Invook**, an infinite canvas for creative minds to bring ideas to life with unified AI tools.
+The official marketing website for **Invook**, an AI workflow platform for recurring work across business apps.
 
 - **Primary Domain**: [invook.ai](https://invook.ai)
 - **Secondary Domain**: [thinkingsoundlab.com](https://thinkingsoundlab.com)
@@ -12,8 +12,7 @@ Built with Next.js 15 and TypeScript.
 - **Framework**: Next.js 15.5 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS 4
-- **UI Components**: shadcn/ui & Framer Motion
-- **Analytics**: Vercel Analytics
+- **Analytics**: Vercel Analytics and PostHog
 - **Linting**: ESLint
 
 ## Getting Started
@@ -44,28 +43,24 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ```
 ├── app/                    # Next.js App Router pages
-│   ├── explore/           # Explore Gallery (Images/Videos)
+│   ├── blog/              # Empty placeholder for future content
+│   ├── changelog/         # Empty placeholder for future product notes
 │   ├── pricing/           # Pricing page
-│   ├── contact-us/        # Contact page
-│   ├── changelog/         # Product updates
 │   ├── privacy-policy/    # Legal documentation
 │   └── layout.tsx         # Root layout
-├── components/            # Reusable React components
-├── lib/                   # API clients and utilities
-│   ├── api/               # Explore API & Multipart Upload
-│   └── upload/            # Upload Orchestrator
-├── store/                 # State management (Zustand)
+├── components/            # Shared layout components
+├── features/              # Feature-oriented marketing sections
+├── lib/                   # App URL handoff helpers
 └── public/                # Static assets
 ```
 
 ## Key Features
 
-- **Explore Gallery**: A community-driven showcase of AI-generated content.
-- **Asset Management**: Authenticated users can view, edit (prompt/tags), and delete their uploads.
-- **Multipart Uploads**: Robust chunked upload system for large media files (up to 50MB).
-- **Responsive Lightbox**: Optimized media viewing experience across all devices.
-- **SEO Ready**: Dynamic sitemap and metadata optimization.
-- **Unified Auth**: Integration with backend magic-link and Google OAuth.
+- **Marketing Homepage**: Premium hero composer with practical workflow prompt examples.
+- **Pricing**: Free, Starter, and Pro plan details with FAQ content.
+- **Content Placeholders**: Blog and Changelog pages ready for future publishing.
+- **App Handoff**: Header, pricing, and composer CTAs route to the hosted app auth URL.
+- **SEO Ready**: Sitemap, robots, and metadata for the marketing surface.
 
 ## Analytics
 

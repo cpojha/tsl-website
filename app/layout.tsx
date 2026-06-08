@@ -1,25 +1,28 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Inter } from "next/font/google";
 import "./globals.css";
-import { ConditionalLayout } from "@/components/conditional-layout";
+import { SiteShell } from "@/components/layout/site-shell";
 import { Analytics } from "@vercel/analytics/react";
-
-import { ThemeProvider } from "./theme-provider";
-import { AuthInitializer } from "@/components/auth-initializer";
 import { PostHogProvider } from "./posthog-provider";
+
+const geist = Geist({
+	variable: "--font-geist",
+	subsets: ["latin"],
+});
 
 const inter = Inter({
 	variable: "--font-inter",
 	subsets: ["latin"],
+	display: "swap",
 });
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://invook.ai'),
 	title: {
 		template: "%s . Invook",
-		default: "Invook",
+		default: "Invook | AI Agents for Workflows",
 	},
-	description: "An infinite canvas for your creative mind",
+	description: "Build AI agents that research, write, update tools, and hand off work across your business apps.",
 	verification: {
 		google: "vJ-6dPaGIkwacm6PDDYNLnbZAJVqClg6jDOa57rA424",
 	},
@@ -31,21 +34,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html lang="en">
 			<body
-				className={`${inter.variable} antialiased`}
+				className={`${geist.variable} ${inter.variable} antialiased`}
 			>
 				<PostHogProvider>
-					<ThemeProvider
-						attribute="class"
-						defaultTheme="system"
-						enableSystem
-						disableTransitionOnChange
-					>
-						<AuthInitializer />
-						<ConditionalLayout>{children}</ConditionalLayout>
-						<Analytics />
-					</ThemeProvider>
+					<SiteShell>{children}</SiteShell>
+					<Analytics />
 				</PostHogProvider>
 			</body>
 		</html>

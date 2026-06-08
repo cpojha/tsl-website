@@ -5,13 +5,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = [
     '',
-    '/explore',
+    '/blog',
     '/changelog',
-    '/download',
     '/pricing',
     '/privacy-policy',
-    '/sign-in',
-    '/sign-up',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

@@ -4,11 +4,11 @@ import posthog from "posthog-js";
 import { useCallback } from "react";
 
 export const useAnalytics = () => {
-	const capture = useCallback((eventName: string, properties?: Record<string, any>) => {
+	const capture = useCallback((eventName: string, properties?: Record<string, unknown>) => {
 		posthog.capture(eventName, properties);
 	}, []);
 
-	const identify = useCallback((distinctId: string, properties?: Record<string, any>) => {
+	const identify = useCallback((distinctId: string, properties?: Record<string, unknown>) => {
 		posthog.identify(distinctId, properties);
 	}, []);
 

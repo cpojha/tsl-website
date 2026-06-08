@@ -3,57 +3,29 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      {
-        source: "/explore",
-        destination: "/",
-        permanent: true,
-      },
+      { source: "/explore", destination: "/", permanent: true },
+      { source: "/download", destination: "/", permanent: true },
+      { source: "/sign-in", destination: "/", permanent: true },
+      { source: "/sign-up", destination: "/", permanent: true },
+      { source: "/film-competition", destination: "/", permanent: true },
+      { source: "/auth/:path*", destination: "/", permanent: true },
+      { source: "/checkout/:path*", destination: "/", permanent: true },
+      { source: "/share/:path*", destination: "/", permanent: true },
     ];
   },
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "img.youtube.com",
-        pathname: "/vi/**",
-      },
-      {
-        protocol: "https",
-        hostname: "q3kusohadpqcfxz4.public.blob.vercel-storage.com",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "picsum.photos",
-      },
-      {
-        protocol: "https",
-        hostname: "fastly.picsum.photos",
-      },
-      {
-        protocol: "https",
-        hostname: "*.cloudfront.net",
-      },
-      {
-        protocol: "https",
-        hostname: "*.amazonaws.com",
-      },
-      {
-        protocol: "https",
-        hostname: "dev.thinkingsoundlab.com",
-      },
-      {
-        protocol: "https",
-        hostname: "dvkbjuoh9mvcd.cloudfront.net",
+        hostname: "cdn.simpleicons.org",
         pathname: "/**",
       },
       {
         protocol: "https",
-        hostname: "res.cloudinary.com",
+        hostname: "api.iconify.design",
         pathname: "/**",
       },
     ],
-
   },
 };
 
